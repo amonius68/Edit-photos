@@ -41,7 +41,6 @@ function resetValuse() {
 }
 
 back.addEventListener('click', function () {
-    // استرجاع القيم المخزنة قبل الضغط على زر reset
     saturate.value = lastAppliedFilters.saturate;
     contrast.value = lastAppliedFilters.contrast;
     brightness.value = lastAppliedFilters.brightness;
@@ -50,7 +49,6 @@ back.addEventListener('click', function () {
     blur.value = lastAppliedFilters.blur;
     hueRotate.value = lastAppliedFilters.hueRotate;
 
-    // إعادة تطبيق الفلاتر على الصورة
     ctx.filter = `
     saturate(${lastAppliedFilters.saturate}%)
     contrast(${lastAppliedFilters.contrast}%)
@@ -62,9 +60,6 @@ back.addEventListener('click', function () {
     `;
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 });
-
-
-
 
 window.onload = function () {
     download.style.display = 'none'
@@ -96,7 +91,6 @@ upload.onchange = function () {
 let filters = document.querySelectorAll('ul li input')
 filters.forEach(filters => {
     filters.addEventListener('input', function () {
-        // تخزين القيم الحالية في المتغير قبل التعديل
         lastAppliedFilters.saturate = saturate.value;
         lastAppliedFilters.contrast = contrast.value;
         lastAppliedFilters.brightness = brightness.value;
@@ -105,7 +99,6 @@ filters.forEach(filters => {
         lastAppliedFilters.blur = blur.value;
         lastAppliedFilters.hueRotate = hueRotate.value;
 
-        // تطبيق الفلاتر على الصورة
         ctx.filter = `
         saturate(${saturate.value}%)
         contrast(${contrast.value}%)
@@ -121,7 +114,6 @@ filters.forEach(filters => {
 
 
 reset.addEventListener('click', function () {
-    // بعد إعادة تعيين الفلاتر، يتم تخزين القيم الحالية ليتم استرجاعها لاحقًا
     lastAppliedFilters.saturate = saturate.value;
     lastAppliedFilters.contrast = contrast.value;
     lastAppliedFilters.brightness = brightness.value;
